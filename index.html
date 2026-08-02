@@ -17,7 +17,6 @@
     }
 
     :root {
-      /* 浅色主题 (默认) */
       --bg-body: #f0f6fe;
       --bg-card: #ffffff;
       --bg-input: #f7faff;
@@ -42,7 +41,6 @@
       --shadow: 0 8px 30px var(--shadow-color);
     }
 
-    /* 深色主题 */
     [data-theme="dark"] {
       --bg-body: #0f172a;
       --bg-card: #1e293b;
@@ -61,9 +59,6 @@
       --shadow: 0 8px 30px var(--shadow-color);
     }
 
-    /* ============================================================
-       基础样式
-       ============================================================ */
     body {
       background: var(--bg-body);
       color: var(--text-primary);
@@ -78,7 +73,6 @@
       transition: background var(--transition), color var(--transition);
     }
 
-    /* ===== 主容器 ===== */
     .app-container {
       max-width: 1024px;
       width: 100%;
@@ -158,11 +152,6 @@
       white-space: nowrap;
     }
 
-    .header-badge i {
-      font-size: 13px;
-    }
-
-    /* ===== 主题切换按钮 ===== */
     .theme-toggle {
       background: var(--bg-input);
       border: 1px solid var(--border-light);
@@ -183,10 +172,6 @@
       transform: scale(0.94);
     }
 
-    .theme-toggle i {
-      font-size: 16px;
-    }
-
     /* ===== 上传区 ===== */
     .drop-zone {
       border: 2px dashed var(--border-light);
@@ -204,7 +189,6 @@
     .drop-zone:active {
       transform: scale(0.99);
     }
-
     .drop-zone.dragover {
       border-color: var(--blue-main);
       background: var(--blue-light);
@@ -215,21 +199,18 @@
       color: var(--blue-main);
       display: block;
       margin-bottom: 4px;
-      transition: color var(--transition);
     }
 
     .drop-zone .title {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-primary);
-      transition: color var(--transition);
     }
 
     .drop-zone .hint {
       font-size: 12px;
       color: var(--text-muted);
       margin-top: 4px;
-      transition: color var(--transition);
     }
 
     .drop-zone .hint .tag {
@@ -294,7 +275,6 @@
       text-align: center;
     }
 
-    /* 自定义开关 (移动友好) */
     .toggle-item input[type="checkbox"] {
       appearance: none;
       width: 38px;
@@ -339,7 +319,7 @@
       gap: 6px;
     }
 
-    /* ===== 按钮系统 (移动端无 hover, 使用 active) ===== */
+    /* ===== 按钮系统 ===== */
     .btn {
       padding: 6px 16px;
       border: none;
@@ -364,18 +344,15 @@
       transform: scale(0.94);
     }
 
-    /* 无 hover，用 active 替代 */
     .btn-primary {
       background: var(--blue-main);
       color: #fff;
       border-color: var(--blue-main);
     }
-
     .btn-primary:active {
       background: var(--blue-dark);
       border-color: var(--blue-dark);
     }
-
     .btn-primary:disabled {
       opacity: 0.4;
       cursor: not-allowed;
@@ -387,12 +364,10 @@
       border-color: var(--border-light);
       background: transparent;
     }
-
     .btn-danger:active {
       background: #fde8ea;
       border-color: var(--red);
     }
-
     [data-theme="dark"] .btn-danger:active {
       background: #3a1f24;
     }
@@ -411,7 +386,6 @@
       background: transparent;
       border-color: var(--border-light);
     }
-
     .btn-outline:active {
       background: var(--bg-hover);
       border-color: var(--blue-main);
@@ -424,7 +398,7 @@
 
     .file-list-header {
       display: grid;
-      grid-template-columns: 2fr 1fr 100px;
+      grid-template-columns: 2fr 0.8fr 1.2fr 80px;
       padding: 4px 8px 8px 8px;
       font-size: 11px;
       font-weight: 600;
@@ -438,6 +412,7 @@
 
     .file-list-header .col-name { padding-left: 4px; }
     .file-list-header .col-status { text-align: center; }
+    .file-list-header .col-reduction { text-align: center; }
     .file-list-header .col-actions { text-align: right; }
 
     .file-list {
@@ -448,7 +423,7 @@
 
     .file-item {
       display: grid;
-      grid-template-columns: 2fr 1fr 100px;
+      grid-template-columns: 2fr 0.8fr 1.2fr 80px;
       align-items: center;
       padding: 10px 8px;
       border-radius: var(--radius-sm);
@@ -474,7 +449,6 @@
       flex-shrink: 0;
       width: 22px;
       text-align: center;
-      transition: color var(--transition);
     }
 
     .file-item .info .name {
@@ -485,7 +459,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-family: var(--mono);
-      transition: color var(--transition);
     }
 
     .file-item .info .size {
@@ -493,7 +466,6 @@
       color: var(--text-muted);
       flex-shrink: 0;
       margin-left: auto;
-      transition: color var(--transition);
     }
 
     .file-item .status-badge {
@@ -514,7 +486,6 @@
       color: var(--green);
       border-color: rgba(46, 204, 113, 0.15);
     }
-
     [data-theme="dark"] .file-item .status-badge.done {
       background: #1a3a2a;
     }
@@ -524,9 +495,20 @@
       color: var(--red);
       border-color: rgba(231, 76, 94, 0.12);
     }
-
     [data-theme="dark"] .file-item .status-badge.error {
       background: #3a1f24;
+    }
+
+    .file-item .reduction-badge {
+      justify-self: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue-main);
+      background: var(--blue-light);
+      padding: 2px 10px;
+      border-radius: 30px;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
     }
 
     .file-item .actions {
@@ -563,7 +545,6 @@
       background: #fde8ea;
       border-color: var(--red);
     }
-
     [data-theme="dark"] .file-item .actions .btn-delete:active {
       background: #3a1f24;
     }
@@ -573,19 +554,16 @@
       text-align: center;
       padding: 30px 16px 22px;
       color: var(--text-muted);
-      transition: color var(--transition);
     }
 
     .empty-state .big-icon {
       font-size: 36px;
       color: var(--border-light);
       margin-bottom: 4px;
-      transition: color var(--transition);
     }
     .empty-state .main-text {
       font-size: 14px;
       color: var(--text-secondary);
-      transition: color var(--transition);
     }
     .empty-state .sub-text {
       font-size: 12px;
@@ -608,18 +586,28 @@
     .footer-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .footer-left .stats-text {
       font-size: 13px;
       color: var(--text-secondary);
-      transition: color var(--transition);
     }
     .footer-left .stats-text strong {
       color: var(--text-primary);
       font-weight: 600;
-      transition: color var(--transition);
+    }
+
+    .footer-left .total-reduction {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue-main);
+      background: var(--blue-light);
+      padding: 2px 14px;
+      border-radius: 30px;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
     }
 
     .footer-right {
@@ -684,7 +672,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: color var(--transition);
     }
 
     .modal-header .close-btn {
@@ -698,7 +685,6 @@
       line-height: 1;
       touch-action: manipulation;
     }
-
     .modal-header .close-btn:active {
       color: var(--text-primary);
     }
@@ -753,17 +739,25 @@
       .toggle-item input[type="checkbox"]::before { width: 16px; height: 16px; }
       .toggle-item input[type="checkbox"]:checked::before { transform: translateX(14px); }
 
-      .file-list-header { grid-template-columns: 2fr 1fr 70px; font-size: 10px; }
-      .file-item { grid-template-columns: 2fr 1fr 70px; padding: 8px 4px; }
+      .file-list-header {
+        grid-template-columns: 1.8fr 0.7fr 0.8fr 60px;
+        font-size: 10px;
+      }
+      .file-item {
+        grid-template-columns: 1.8fr 0.7fr 0.8fr 60px;
+        padding: 8px 4px;
+      }
       .file-item .info .name { font-size: 12px; }
       .file-item .info .size { font-size: 10px; }
       .file-item .status-badge { font-size: 10px; padding: 2px 8px; }
+      .file-item .reduction-badge { font-size: 10px; padding: 1px 8px; }
       .file-item .actions .btn { padding: 2px 6px; font-size: 11px; }
 
       .footer-bar { flex-direction: column; align-items: stretch; gap: 8px; }
       .footer-right { justify-content: stretch; }
       .footer-right .btn { flex: 1; justify-content: center; }
       .footer-left .stats-text { font-size: 12px; }
+      .footer-left .total-reduction { font-size: 12px; padding: 2px 12px; }
 
       .modal-box { max-height: 92vh; }
       .modal-header { padding: 12px 16px; }
@@ -776,20 +770,21 @@
       .app-header .logo h1 { font-size: 17px; }
       .header-badge { font-size: 11px; padding: 3px 10px; }
       .theme-toggle { font-size: 13px; padding: 3px 8px; }
-      .theme-toggle i { font-size: 13px; }
 
-      .toolbar .options { gap: 6px 10px; }
-      .toggle-item { font-size: 11px; }
-      .toggle-item input[type="checkbox"] { width: 30px; height: 18px; }
-      .toggle-item input[type="checkbox"]::before { width: 14px; height: 14px; }
-      .toggle-item input[type="checkbox"]:checked::before { transform: translateX(12px); }
-
+      .file-list-header {
+        grid-template-columns: 1.5fr 0.6fr 0.6fr 50px;
+        font-size: 9px;
+      }
+      .file-item {
+        grid-template-columns: 1.5fr 0.6fr 0.6fr 50px;
+        padding: 6px 2px;
+      }
       .file-item .info .name { font-size: 11px; }
       .file-item .status-badge { font-size: 9px; padding: 1px 6px; }
+      .file-item .reduction-badge { font-size: 9px; padding: 1px 6px; }
       .btn { font-size: 12px; padding: 4px 12px; }
     }
 
-    /* ===== 安全区域适配 (iPhone) ===== */
     @supports (padding: max(0px)) {
       .app-container {
         padding-left: max(14px, env(safe-area-inset-left));
@@ -808,7 +803,7 @@
         <i class="fas fa-code"></i>
         <h1>Code<span>Cleaner</span></h1>
       </div>
-      <div class="sub"><i class="fas fa-bolt" style="color:var(--blue-main);margin-right:4px;"></i> 注释清除 · 空行压缩 · 代码净化</div>
+      <div class="sub"><i class="fas fa-bolt" style="color:var(--blue-main);margin-right:4px;"></i> 注释清除 · 空行压缩 · 智能缩减</div>
     </div>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="切换深色模式">
@@ -856,6 +851,7 @@
     <div class="file-list-header">
       <span class="col-name"><i class="fas fa-file-alt" style="margin-right:4px;"></i>文件名</span>
       <span class="col-status">状态</span>
+      <span class="col-reduction">缩减率</span>
       <span class="col-actions">操作</span>
     </div>
     <div class="file-list" id="fileList">
@@ -871,6 +867,7 @@
   <div class="footer-bar">
     <div class="footer-left">
       <span class="stats-text"><i class="fas fa-list-ul" style="color:var(--blue-main);margin-right:6px;"></i>共 <strong id="totalFiles">0</strong> 个文件，<strong id="readyFiles">0</strong> 个已就绪</span>
+      <span class="total-reduction" id="totalReduction">总缩减 0%</span>
     </div>
     <div class="footer-right">
       <button class="btn btn-primary" id="downloadAllBtn" disabled>
@@ -915,25 +912,25 @@
       themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 
-    function toggleTheme() {
+    setTheme(getPreferredTheme());
+    themeToggle.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme') || 'light';
       setTheme(current === 'dark' ? 'light' : 'dark');
-    }
-
-    // 初始化主题
-    setTheme(getPreferredTheme());
-
-    themeToggle.addEventListener('click', toggleTheme);
+    });
 
     // ============================================================
-    // 2. 核心清理引擎
+    // 2. 核心清理引擎 (修复注释误删)
     // ============================================================
     function cleanCode(content, options) {
       let result = content;
       if (options.removeComments) {
+        // 修复：避免删除 http:// 等中的 //，使用负向后顾 (?<!:)
+        // 匹配单行注释 // ...（排除 :// 场景）
+        result = result.replace(/(?<!:)\/\/.*$/gm, '');
+        // 匹配多行注释 /* ... */（简单处理，不处理字符串内的，因为较少见）
         result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+        // HTML 注释
         result = result.replace(/<!--[\s\S]*?-->/g, '');
-        result = result.replace(/\/\/.*$/gm, '');
       }
       if (options.stripTrailingSpaces) {
         result = result.replace(/[ \t]+$/gm, '');
@@ -957,10 +954,9 @@
       return list.includes(ext);
     }
 
-    function getCleanedFilename(original) {
-      const lastDot = original.lastIndexOf('.');
-      if (lastDot === -1) return original + '_cleaned';
-      return original.slice(0, lastDot) + '_cleaned' + original.slice(lastDot);
+    // 下载时保持原文件名（不变）
+    function getDownloadFilename(original) {
+      return original; // 直接返回原名
     }
 
     // ============================================================
@@ -977,6 +973,7 @@
     const fileCountBadge = document.getElementById('fileCountBadge');
     const downloadAllBtn = document.getElementById('downloadAllBtn');
     const clearAllBtn = document.getElementById('clearAllBtn');
+    const totalReductionSpan = document.getElementById('totalReduction');
 
     const optRemoveComments = document.getElementById('optRemoveComments');
     const optCompressBlankLines = document.getElementById('optCompressBlankLines');
@@ -988,7 +985,7 @@
     const previewCloseBtn = document.getElementById('previewCloseBtn');
 
     // ============================================================
-    // 4. 渲染 (无 hover, 全部用 touch 友好)
+    // 4. 渲染
     // ============================================================
     function render() {
       const ready = files.filter(f => f.cleanedContent !== undefined).length;
@@ -998,6 +995,17 @@
       readyFilesSpan.textContent = ready;
       fileCountBadge.textContent = `${total} 个文件`;
       downloadAllBtn.disabled = total === 0 || ready === 0;
+
+      // 计算总缩减率
+      let totalOrig = 0, totalClean = 0;
+      files.forEach(f => {
+        if (f.originalContent !== undefined && f.cleanedContent !== undefined) {
+          totalOrig += f.originalContent.length;
+          totalClean += f.cleanedContent.length;
+        }
+      });
+      const totalReduction = totalOrig > 0 ? ((totalOrig - totalClean) / totalOrig * 100) : 0;
+      totalReductionSpan.textContent = `总缩减 ${totalReduction.toFixed(1)}%`;
 
       if (total === 0) {
         fileListEl.innerHTML = `
@@ -1024,6 +1032,15 @@
           statusText = '✅ 已清理';
         }
 
+        // 计算单个缩减率
+        let reductionText = '';
+        if (isReady && f.originalContent) {
+          const origLen = f.originalContent.length;
+          const cleanLen = f.cleanedContent.length;
+          const reduction = origLen > 0 ? ((origLen - cleanLen) / origLen * 100) : 0;
+          reductionText = reduction > 0 ? `-${reduction.toFixed(1)}%` : '0%';
+        }
+
         const extIcon = {
           'js': 'fab fa-js',
           'css': 'fab fa-css3-alt',
@@ -1042,6 +1059,7 @@
               <span class="size">${sizeKB} KB</span>
             </div>
             <span class="${statusClass}">${statusText}</span>
+            <span class="reduction-badge">${reductionText}</span>
             <div class="actions">
               ${isReady ? `<button class="btn btn-download download-btn" data-index="${idx}"><i class="fas fa-download"></i></button>` : ''}
               <button class="btn preview-btn" data-index="${idx}" ${!isReady ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}><i class="fas fa-eye"></i></button>
@@ -1052,7 +1070,7 @@
       });
       fileListEl.innerHTML = html;
 
-      // 事件绑定 (使用 click 即可, 移动端友好)
+      // 事件绑定
       fileListEl.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
@@ -1160,7 +1178,7 @@
     }
 
     // ============================================================
-    // 6. 预览 & 下载
+    // 6. 预览 & 下载 (文件名不变)
     // ============================================================
     function previewFile(index) {
       const f = files[index];
@@ -1180,7 +1198,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = getCleanedFilename(f.name);
+      a.download = getDownloadFilename(f.name);  // 原文件名
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1196,7 +1214,7 @@
       try {
         const zip = new JSZip();
         ready.forEach(f => {
-          zip.file(getCleanedFilename(f.name), f.cleanedContent);
+          zip.file(getDownloadFilename(f.name), f.cleanedContent); // 原文件名
         });
         const blob = await zip.generateAsync({ type: 'blob' });
         const url = URL.createObjectURL(blob);
@@ -1247,7 +1265,6 @@
       this.value = '';
     });
 
-    // 拖拽事件 (移动端不支持拖拽, 但桌面保留)
     dropZone.addEventListener('dragover', function(e) {
       e.preventDefault();
       this.classList.add('dragover');
@@ -1264,7 +1281,6 @@
       }
     });
 
-    // 选项变更
     optRemoveComments.addEventListener('change', reProcessAll);
     optCompressBlankLines.addEventListener('change', reProcessAll);
     optStripTrailingSpaces.addEventListener('change', reProcessAll);
@@ -1272,7 +1288,6 @@
     clearAllBtn.addEventListener('click', clearAll);
     downloadAllBtn.addEventListener('click', downloadAll);
 
-    // 预览模态框关闭
     previewCloseBtn.addEventListener('click', () => previewModal.classList.remove('show'));
     previewModal.addEventListener('click', function(e) {
       if (e.target === this) previewModal.classList.remove('show');
@@ -1281,9 +1296,7 @@
       if (e.key === 'Escape') previewModal.classList.remove('show');
     });
 
-    // 初始渲染
     render();
-
   })();
 </script>
 </body>
